@@ -41,3 +41,10 @@ func New(cfg *config.Config) (*MongoDB, error) {
 
 	return db, nil
 }
+
+func (db *MongoDB) Close() error {
+	ctx, cancel := context.WithTimeout(context.Background(), db.cfg.Timeout)
+	defer cancel()
+
+	return db.client.Disconnect(ctx)
+}
