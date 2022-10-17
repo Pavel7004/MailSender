@@ -18,6 +18,12 @@ test:
 	@echo "------------------"
 	go test ./... -coverprofile=cover.out
 
+swag:
+	@echo "------------------"
+	@echo "Running swag...   "
+	@echo "------------------"
+	swag init --md ./ --pd -g server.go -d ./pkg/adapters/http
+
 jaeger:
 	docker run -dp 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one:latest
 
