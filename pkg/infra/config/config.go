@@ -18,6 +18,12 @@ type Config struct {
 func Get() (*Config, error) {
 	config := new(Config)
 
+	viper.SetConfigName("config")
+	viper.SetConfigType("yaml")
+	viper.AddConfigPath("$HOME/.config/MailSender")
+	viper.AddConfigPath("$HOME/.MailSender")
+	viper.AddConfigPath(".")
+
 	viper.SetDefault("mongo_uri", "mongodb://localhost:27017")
 	viper.SetDefault("mongo_timeout", "10s")
 
@@ -28,4 +34,8 @@ func Get() (*Config, error) {
 	}
 
 	return config, nil
+}
+
+func WriteToFile(filename string) error {
+	return viper.WriteConfigAs(filename)
 }
