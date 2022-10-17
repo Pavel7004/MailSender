@@ -1,0 +1,2 @@
+# MailSender
+Mail subscription service
