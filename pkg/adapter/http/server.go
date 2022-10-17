@@ -1,8 +1,15 @@
 package http
 
+import (
+	"github.com/gin-gonic/gin"
+
+	v1 "github.com/Pavel7004/MailSender/pkg/adapter/http/v1"
+	"github.com/Pavel7004/MailSender/pkg/infra/config"
+)
+
 // @title           MailSender API
 // @version         0.1
-// @description     This is an API for mailing list subscriber
+// @description     This is an API for mail subscription service
 
 // @contact.name   Kovalev Pavel
 // @contact.email  kovalev5690@gmail.com
@@ -11,10 +18,6 @@ package http
 // @license.url    https://www.gnu.org/licenses/gpl-3.0.html
 
 // @host      localhost:8080
-
-import (
-	"github.com/gin-gonic/gin"
-)
 
 type Server struct {
 	router    *gin.Engine
@@ -28,7 +31,7 @@ func New(cfg *config.Config) *Server {
 
 	server.router = gin.New()
 	server.isRunning = false
-	server.v1 = v1.New(shop, cfg)
+	server.v1 = v1.New(cfg)
 
 	server.prepareRouter()
 

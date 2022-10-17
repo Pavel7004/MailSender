@@ -1,6 +1,11 @@
 package v1
 
-import "github.com/Pavel7004/MailSender/pkg/domain"
+import (
+	"github.com/gin-gonic/gin"
+
+	"github.com/Pavel7004/MailSender/pkg/domain"
+	"github.com/Pavel7004/MailSender/pkg/infra/config"
+)
 
 type Handler struct {
 	cfg *config.Config
