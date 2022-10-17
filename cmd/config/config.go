@@ -4,10 +4,10 @@ import (
 	"flag"
 	"os"
 
-	"github.com/Pavel7004/MailSender/pkg/infra/config"
-
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+
+	"github.com/Pavel7004/MailSender/pkg/infra/config"
 )
 
 func main() {
